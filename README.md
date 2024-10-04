@@ -4,35 +4,35 @@ This project enables the creation of personalized Spotify playlists based on the
 
 ## Data Collection and Analysis
 1. Initial Data Request:
-The project begins by fetching the top 1000 songs on Spotify using the Spotify API. These tracks are stored and analyzed to provide insights into various musical trends.
+    • The project begins by fetching the top 1000 songs on Spotify using the Spotify API. These tracks are stored and analyzed to provide insights into various musical trends.
 
 3. Data Cleaning and Preparation:
-Duplicate tracks are identified and removed to ensure clean data for further analysis.
-The tracks are categorized by genre, and specific track features (e.g., tempo, danceability, energy) are retrieved using track IDs.
+    • Duplicate tracks are identified and removed to ensure clean data for further analysis.
+    • The tracks are categorized by genre, and specific track features (e.g., tempo, danceability, energy) are retrieved using track IDs.
 
 4. Feature Analysis:
-The extracted track features are used to identify trends and patterns related to track popularity. This analysis highlights the characteristics that make tracks popular and identifies similar features across different genres.
+    • The extracted track features are used to identify trends and patterns related to track popularity. This analysis highlights the characteristics that make tracks popular and identifies similar features across different genres.
 
 ## Playlist Creation Based on Favorite Tracks
 1. Genre-Specific Track Selection:
-After analyzing the top 1000 tracks, favorite songs from specific genres (e.g., house and reggaeton) are extracted for playlist creation.
+    • After analyzing the top 1000 tracks, favorite songs from specific genres (e.g., house and reggaeton) are extracted for playlist creation.
 
 2. Script to Create Playlists:
-A script is developed to generate playlists based on tracks similar to the selected favorite tracks. Using ngrok to handle OAuth authentication, the script securely interacts with the Spotify API to create playlists directly on the user's account.
+    • A script is developed to generate playlists based on tracks similar to the selected favorite tracks. Using ngrok to handle OAuth authentication, the script securely interacts with the Spotify API to create playlists directly on the user's account.
 
 3. Challenges in Playlist Creation:
-Due to the limited number of favorite tracks saved for some genres, the function to retrieve similar tracks could not always generate a full 50 songs for each playlist.
-As a result, the house playlist contains 43 tracks, and the reggaeton playlist contains 8 tracks.
+    • Due to the limited number of favorite tracks saved for some genres, the function to retrieve similar tracks could not always generate a full 50 songs for each playlist.
+    • As a result, the house playlist contains 43 tracks, and the reggaeton playlist contains 8 tracks.
 
 ## Playlist Creation Based on a public playlist
 1. Retrieve tracks from public playlist:
-Using a playlist ID to retrieve tracks froma public plalist containing the top 10 favorite songs and display the tracks. Retrieve song features using track IDs and append track info to track features and create a Dataframe.
+    • Using a playlist ID to retrieve tracks froma public plalist containing the top 10 favorite songs and display the tracks. Retrieve song features using track IDs and append track info to track features and create a Dataframe.
 
 2. Track Feature Criteria:
-Find the average values for song features in the Dataframe and create a funcntion to find recommended tracks based on the average values of the track features.
+    • Find the average values for song features in the Dataframe and create a funcntion to find recommended tracks based on the average values of the track features.
 
 3. Create Playlist:
-Exectute function to create playlist using spotify username and add the recommended tracks to the new playlist then display the details of the tracks added to the new playlist.
+    • Exectute function to create playlist using spotify username and add the recommended tracks to the new playlist then display the details of the tracks added to the new playlist.
 
 ## What is ngrok?
 ngrok is a tool that creates secure tunnels to your localhost, allowing you to expose a local server to the internet. It provides a public URL that redirects to your local server, which is especially useful for testing webhooks or authentication processes that require a public endpoint. In this project, ngrok is used to set up a public URL for the Spotify OAuth callback, allowing for secure and seamless authentication without exposing the client secrets.
@@ -40,41 +40,56 @@ ngrok is a tool that creates secure tunnels to your localhost, allowing you to e
 # Playlist Creator 1
 ### Key Features
 1. Environment Variables:
-Sensitive information such as SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, and SPOTIPY_REDIRECT_URI are stored in a .env file and loaded securely using the dotenv library. Use Ngrok to set up tunnel to the local redirect URI.
+    • Sensitive information such as SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, and SPOTIPY_REDIRECT_URI are stored in a .env file and loaded securely using the dotenv library. Use Ngrok to set up tunnel to the local redirect URI.
 
 2. Playlist Creation:
-The program retrieves tracks from two dataframes: fav_tracks_house_3 and fav_tracks_reggaeton_3. It creates two separate playlists on Spotify, each containing 50 songs that are similar to the tracks in the respective dataframes.
+    • The program retrieves tracks from two dataframes: fav_tracks_house_3 and fav_tracks_reggaeton_3. It creates two separate playlists on Spotify, each containing 50 songs that are similar to the tracks in the respective dataframes.
 
 3. Track Filtering:
-The project ensures that the tracks added to the playlists have an artist popularity  below 75 and track popularity of less than 60, ensuring a curated selection.
+    • The project ensures that the tracks added to the playlists have an artist popularity  below 75 and track popularity of less than 60, ensuring a curated selection.
 
 4. User-Friendly Output:
-Once the playlists are created, the program outputs the URLs of the newly generated playlists and details the tracks added, allowing users to access and enjoy their customized playlists easily.
+    • Once the playlists are created, the program outputs the URLs of the newly generated playlists and details the tracks added, allowing users to access and enjoy their customized playlists easily.
 
 # Playlist Creator 2
 ### Key Features
 1. Environment Variables:
-Sensitive information such as SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, and SPOTIPY_REDIRECT_URI are stored in a .env file and loaded securely using the dotenv library. Define the public URL generated by Ngroks server to tunnel the redirect URI. 
+    • Sensitive information such as SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, and SPOTIPY_REDIRECT_URI are stored in a .env file and loaded securely using the dotenv library. Define the public URL generated by Ngroks server to tunnel the redirect URI. 
 
 2. Playlist Creation:
-The program retrieves tracks from a public playlist using the playlist ID and fetches audio features for those tracks.
+    • The program retrieves tracks from a public playlist using the playlist ID and fetches audio features for those tracks.
 
 3. Track Filtering:
-The project finds 25 similar tracks using the track IDs from the retrieved playlist. 
+    • The project finds 25 similar tracks using the track IDs from the retrieved playlist. 
 
 4. User-Friendly Output:
-The URLs of the newly generated playlists and details of the added tracks are displayed for easy access.
+    • The URLs of the newly generated playlists and details of the added tracks are displayed for easy access.
 
 # Playlist Creator 3
 ### Key Features
 1. Environment Variables:
-Sensitive credentials (Client ID, Secret, Redirect URI) are securely stored in a .env file. In this version, Ngrok is not used; the standard OAuth flow is implemented.
+    • Sensitive credentials (Client ID, Secret, Redirect URI) are securely stored in a .env file. In this version, Ngrok is not used; the standard OAuth flow is implemented.
 
 2. Playlist Creation:
-The program retrieves tracks from a public playlist using the playlist ID to fetch tracks and track features.
+    • The program retrieves tracks from a public playlist using the playlist ID to fetch tracks and track features.
 
 3. Track Filtering:
-Instead of finding similar tracks based solely on track IDs, the program calculates average audio feature values from the public playlist and uses these values as criteria to recommend 25 similar tracks. 
+    • Instead of finding similar tracks based solely on track IDs, the program calculates average audio feature values from the public playlist and uses these values as criteria to recommend 25 similar tracks. 
 
 4. User-Friendly Output:
-The URLs of the newly generated playlists and the details of the added tracks are displayed, ensuring easy access to the personalized playlist.
+    • The URLs of the newly generated playlists and the details of the added tracks are displayed, ensuring easy access to the personalized playlist.
+
+# Playlist Creator 3 - User Generated Playlist
+### Key Features
+1. Environment Variables:
+    • Sensitive information such as SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, and SPOTIPY_REDIRECT_URI is securely stored in a .env file and loaded using the dotenv library.
+This ensures that credentials are not exposed in the code.
+
+2. Playlist Creation:
+    • The program retrieves tracks from a public playlist by using its playlist ID and track IDs then retrieves users top artists and tracks.
+
+3. Track Filtering:
+    • Instead of recommending tracks based solely on track IDs or features, the program uses a combination of seed artists (2) from the users top artists and seed tracks (3) from the public playlist to find songs for the user-generated playlist.
+
+4. User-Friendly Output:
+    • The URLs of the newly generated playlists are displayed, along with detailed information about each added track, providing users easy access and insight into their personalized playlist.
