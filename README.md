@@ -79,7 +79,7 @@ ngrok is a tool that creates secure tunnels to your localhost, allowing you to e
 4. User-Friendly Output:
     • The URLs of the newly generated playlists and the details of the added tracks are displayed, ensuring easy access to the personalized playlist.
 
-# Playlist Creator 3 - User Generated Playlist
+# Playlist Creator 4 - User Generated Playlist
 ### Key Features
 1. Environment Variables:
     • Sensitive information such as SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, and SPOTIPY_REDIRECT_URI is securely stored in a .env file and loaded using the dotenv library.
