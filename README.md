@@ -30,9 +30,11 @@ This project enables the creation of personalized Spotify playlists based on the
 
 2. Track Feature Criteria:
     • Find the average values for song features in the Dataframe and create a funcntion to find recommended tracks based on the average values of the track features.
+    • Use seed tracks from public playlist and seed artist from users top artist to find recommended tracks
 
-3. Create Playlist:
+4. Create Playlist:
     • Exectute function to create playlist using spotify username and add the recommended tracks to the new playlist then display the details of the tracks added to the new playlist.
+
 
 ## What is ngrok?
 ngrok is a tool that creates secure tunnels to your localhost, allowing you to expose a local server to the internet. It provides a public URL that redirects to your local server, which is especially useful for testing webhooks or authentication processes that require a public endpoint. In this project, ngrok is used to set up a public URL for the Spotify OAuth callback, allowing for secure and seamless authentication without exposing the client secrets.
